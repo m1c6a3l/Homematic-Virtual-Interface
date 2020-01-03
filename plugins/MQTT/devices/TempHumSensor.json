@@ -1,0 +1,42 @@
+{
+		"subscribe" : ["stat/%name%","tele/%name%"],
+		"clazztype" : "SwitchDevice",
+		"type" : "Temperatur-Feuchte-Sensor",
+		"hmdevice" : "HM-WDS40-TH-I-2",
+		"channels" : {
+			"0" : {
+				"hm_channeltype" : "MAINTENANCE",
+				"hm_datapoints" : ["UNREACH"],
+				"settings" : {
+					
+					"UNREACH" : {
+						"mqtt_topic_state" : "tele/%name%/LWT",
+						"mqtt_payload_state" : "",
+						"mqtt_representation_state" : {"online":false, "offline":true}
+					}
+				}
+			},
+			"1" : {
+				"hm_channeltype" : "WEATHER",
+				"hm_datapoints" : ["TEMPERATURE,HUMIDITY"],
+				"settings" : {
+
+						"TEMPERATURE" : {
+
+							
+							"mqtt_topic_state" : ".*/%name%/temperature",
+							"mqtt_payload_state" : "Temperature"
+							
+							
+						},
+						"HUMIDITY" : {
+
+							"mqtt_topic_state" : ".*/%name%/humidity",
+							"mqtt_payload_state" : "Humidity"
+						}
+				}
+				
+			}
+		}
+}
+	
